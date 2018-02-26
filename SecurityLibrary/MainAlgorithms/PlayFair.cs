@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,20 +69,94 @@ namespace SecurityLibrary
             return komatrix;
         }
 
+        public List<string> divideIt(string x)
+        {
+            List<string> largeString = new List<string>();
+            int chunk = 100;
+            int xLength = x.Length;
+            for (int i = 0; i < xLength; i += chunk)
+            {
+                if (i + chunk > xLength) chunk = xLength - i;
+                largeString.Add(x.Substring(i, chunk));
+
+            }
+
+            return largeString;
+        } 
+
         public string Decrypt(string cipherText, string key)
         {
-            HashSet<char> Mkey = ModifiedKey(key);
-            string CT = "";
-            return "";
+            cipherText = cipherText.ToLower();
+            List<string> smallSegs = new List<string>();
+            bool flag = false;
+            if (cipherText.Length > 100)
+            {
+                smallSegs = divideIt(cipherText);
+                flag = true;
+            }
+
+            KOMatrices matrix = KOFunc(ModifiedKey(key));
+            string FPT = "";
+            for (int j = 0; j < smallSegs.Count || !flag ; j++)
+            {
+                if (flag)
+                {
+                    cipherText = smallSegs[j];
+                }
+                int CTLength = cipherText.Length;
+                string PT = "";
+                flag = true;
+                for (int i = 0; i < CTLength; i += 2)
+                {
+                    char c1 = cipherText[i], c2 = cipherText[i + 1];
+                    if (matrix.KM[c1].Item2 == matrix.KM[c2].Item2)
+                    {
+                        PT += matrix.OM[(matrix.KM[c1].Item1 + 4) % 5][matrix.KM[c1].Item2];
+                        PT += matrix.OM[(matrix.KM[c2].Item1 + 4) % 5][matrix.KM[c2].Item2];
+                    }
+                    else if (matrix.KM[c1].Item1 == matrix.KM[c2].Item1)
+                    {
+                        PT += matrix.OM[matrix.KM[c1].Item1][(matrix.KM[c1].Item2 + 4) % 5];
+                        PT += matrix.OM[matrix.KM[c2].Item1][(matrix.KM[c2].Item2 + 4) % 5];
+                    }
+                    else
+                    {
+                        PT += matrix.OM[matrix.KM[c1].Item1][matrix.KM[c2].Item2];
+                        PT += matrix.OM[matrix.KM[c2].Item1][matrix.KM[c1].Item2];
+                    }
+                }
+
+                if (PT[PT.Length - 1] == 'x')
+                {
+                    PT = PT.Remove(PT.Length - 1);
+                }
+
+                for (int i = 0; i < PT.Length; i++)
+                {
+                    if (PT[i] == 'x')
+                    {
+                        if (PT[i - 1] == PT[i + 1])
+                        {
+                            if (i+1<PT.Length && (i+1)%2==0)
+                            {
+                                PT = PT.Remove(i, 1);
+                            }
+                        }
+                    }
+                }
+
+                FPT += PT;
+            }
+
+            Console.WriteLine(FPT);
+            return FPT;
         }
 
 
         public string Encrypt(string plainText, string key)
         {
             string CT = "";
-
-            HashSet<char> Mkey = ModifiedKey(key);
-            KOMatrices KOkey = KOFunc(Mkey);
+            KOMatrices KOkey = KOFunc(ModifiedKey(key));
             for (int i = 0; i < plainText.Length - 1; i+=2)
             {
                 if (plainText[i] == plainText[i + 1])
