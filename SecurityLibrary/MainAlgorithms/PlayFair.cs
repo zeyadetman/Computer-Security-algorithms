@@ -126,26 +126,30 @@ namespace SecurityLibrary
                     }
                 }
 
+
+                string ans = PT;
                 if (PT[PT.Length - 1] == 'x')
                 {
-                    PT = PT.Remove(PT.Length - 1);
+                    ans = ans.Remove(PT.Length - 1);
                 }
 
-                for (int i = 0; i < PT.Length; i++)
+                int w = 0;
+                for (int i = 0; i < ans.Length; i++)
                 {
                     if (PT[i] == 'x')
                     {
                         if (PT[i - 1] == PT[i + 1])
                         {
-                            if (i+1<PT.Length && (i+1)%2==0)
+                            if (i+w<ans.Length && (i-1)%2==0)
                             {
-                                PT = PT.Remove(i, 1);
+                                ans = ans.Remove(i+w, 1);
+                                w--;
                             }
                         }
                     }
                 }
 
-                FPT += PT;
+                FPT += ans;
             }
 
             Console.WriteLine(FPT);
@@ -156,13 +160,13 @@ namespace SecurityLibrary
         public string Encrypt(string plainText, string key)
         {
             string CT = "";
+
             KOMatrices KOkey = KOFunc(ModifiedKey(key));
             for (int i = 0; i < plainText.Length - 1; i+=2)
             {
                 if (plainText[i] == plainText[i + 1])
                 {
-                    i++;
-                    plainText = plainText.Substring(0, i) + 'x' + plainText.Substring(i);
+                    plainText = plainText.Substring(0, i+1) + 'x' + plainText.Substring(i+1);
                 }
 
             }
@@ -188,6 +192,9 @@ namespace SecurityLibrary
                 }
             }
 
+            
+            Console.WriteLine(CT.ToUpper());
+            Console.WriteLine("\n\n");
             return CT.ToUpper();
         }
 

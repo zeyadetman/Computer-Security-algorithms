@@ -91,6 +91,7 @@ namespace SecurityPackageTest
         {
             PlayFair algorithm = new PlayFair();
             string cipher = algorithm.Encrypt(largePlain, largeKey);
+            Console.WriteLine(largeCipher);
             Assert.IsTrue(cipher.Equals(largeCipher, StringComparison.InvariantCultureIgnoreCase));
         }
 
