@@ -53,10 +53,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ColumnarTest.cs" />
+    <Compile Include="HillCipherTest.cs" />
     <Compile Include="PlayfairTest.cs" />
     <Compile Include="MonoalphabeticTest.cs" />
     <Compile Include="CeaserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RailFenceTest.cs" />
+    <Compile Include="VignereTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SecurityLibrary\SecurityLibrary.csproj">

@@ -19,3 +19,5 @@ E:\Projects\Computer-Security-algorithms\SecurityPackageTest\bin\Debug\SecurityL
 E:\Projects\Computer-Security-algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.csprojResolveAssemblyReference.cache
 E:\Projects\Computer-Security-algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.dll
 E:\Projects\Computer-Security-algorithms\SecurityPackageTest\obj\Debug\SecurityPackageTest.pdb
+E:\Projects\Computer-Security-algorithms\SecurityPackageTest\bin\Debug\MathNet.Numerics.dll
+E:\Projects\Computer-Security-algorithms\SecurityPackageTest\bin\Debug\MathNet.Numerics.xml

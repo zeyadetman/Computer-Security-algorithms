@@ -10,6 +10,8 @@ E:\FCIS\Year 4\Term2\Computer Security Methods\Computer Security algorithms\Secu
 E:\FCIS\Year 4\Term2\Computer Security Methods\Computer Security algorithms\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
 E:\Projects\Computer-Security-algorithms\SecurityLibrary\bin\Debug\SecurityLibrary.dll
 E:\Projects\Computer-Security-algorithms\SecurityLibrary\bin\Debug\SecurityLibrary.pdb
-E:\Projects\Computer-Security-algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.csprojResolveAssemblyReference.cache
 E:\Projects\Computer-Security-algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.dll
 E:\Projects\Computer-Security-algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.pdb
+E:\Projects\Computer-Security-algorithms\SecurityLibrary\bin\Debug\MathNet.Numerics.dll
+E:\Projects\Computer-Security-algorithms\SecurityLibrary\bin\Debug\MathNet.Numerics.xml
+E:\Projects\Computer-Security-algorithms\SecurityLibrary\obj\Debug\SecurityLibrary.csprojResolveAssemblyReference.cache
