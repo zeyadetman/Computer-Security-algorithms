@@ -52,9 +52,28 @@ namespace SecurityLibrary
             int m = Convert.ToInt32(Math.Sqrt((CD.Count)));
             Matrix<double> CMatrix = DenseMatrix.OfColumnMajor(m, (int)cipherText.Count / m, CD.AsEnumerable());
             Matrix<double> PMatrix = DenseMatrix.OfColumnMajor(m, (int)plainText.Count / m, PD.AsEnumerable());
-            Console.WriteLine((CMatrix*PMatrix).ToString());
-            List<int> f = new List<int>();
-            return f;
+            List<int> mayBeKey = new List<int>();
+            for (int i = 0; i < 26; i++)
+            {
+                for (int j = 0; j < 26; j++)
+                {
+                    for (int k = 0; k < 26; k++)
+                    {
+                        for (int l = 0; l < 26; l++)
+                        {
+                            mayBeKey = new List<int>( new [] {i,j,k,l});
+                            List<int> aa = Encrypt(plainText, mayBeKey);
+                            if (aa.SequenceEqual(cipherText))
+                            {
+                                return mayBeKey;
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            throw new InvalidAnlysisException();
         }
         
 
@@ -125,7 +144,18 @@ namespace SecurityLibrary
 
         public List<int> Analyse3By3Key(List<int> plainText, List<int> cipherText)
         {
-            throw new NotImplementedException();
+            List<double> CD = cipherText.ConvertAll(x => (double)x);
+            List<double> PD = plainText.ConvertAll(x => (double)x);
+            int m = Convert.ToInt32(Math.Sqrt((CD.Count)));
+            Matrix<double> CMatrix = DenseMatrix.OfColumnMajor(m, (int)cipherText.Count / m, CD.AsEnumerable());
+            Matrix<double> PMatrix = DenseMatrix.OfColumnMajor(m, (int)plainText.Count / m, PD.AsEnumerable());
+            List<int> mayBeKey = new List<int>();
+            Matrix<double> KMatrix = DenseMatrix.Create(3, 3, 0);
+            PMatrix = ModMinorCofactor(PMatrix.Transpose(), det(PMatrix));
+            KMatrix = (CMatrix * PMatrix);
+            mayBeKey = KMatrix.Transpose().Enumerate().ToList().Select(i => (int)i%26).ToList();
+            mayBeKey.ForEach(i=> Console.WriteLine(i.ToString()));
+            return mayBeKey;
         }
 
     }
