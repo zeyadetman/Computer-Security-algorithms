@@ -14,27 +14,49 @@ namespace SecurityLibrary
             throw new NotImplementedException();
         }
 
+    
+
+
         public string Decrypt(string cipherText, List<int> key)
         {
-            List<List<char>> table = new List<List<char>>();
-            Dictionary<int, string> cip = new Dictionary<int, string>();
-            string PT = "";
-            cipherText = cipherText.ToLower();
-            int columns = key.Count;
-            int rows = (int)Math.Ceiling((double)cipherText.Length / columns);
-            for (int i = 0; i < rows; i++)
+            cipherText = cipherText.ToUpper();
+            int x = cipherText.Length;
+            if (x % key.Count == 0)
             {
-                table.Add(new List<char>());
             }
-            for (int i = 0; i < columns; i++)
+            else
             {
-                for (int j = 0; j < rows; j++)
+                x += key.Count;
+            }
+            double col = x / key.Count;
+            int c = (int)(col);
+            string finalll = "";
+            char[,] enc = new char[c, key.Count];
+            int k = 0;
+            int tmp = 0;
+            for (int i = 0; i < key.Count; i++)
+            {
+                k = key.IndexOf(i + 1);
+
+                for (int j = 0; j < col; j++)
                 {
-                    
+                    if (tmp < cipherText.Length)
+                    {
+                        enc[j, k] = cipherText[tmp];
+                        tmp++;
+                    }
+                }
+            }
+            for (int i = 0; i < col; i++)
+            {
+                for (int j = 0; j < key.Count; j++)
+                {
+                    finalll = finalll + enc[i, j];
                 }
             }
 
-            return "";
+
+            return finalll.ToUpper();
         }
 
         public string Encrypt(string plainText, List<int> key)
