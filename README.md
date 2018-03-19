@@ -1,2 +1,2 @@
 # Computer-Security-algorithms
-Computer Security algorithms in C# .
+Computer Security algorithms in C#
