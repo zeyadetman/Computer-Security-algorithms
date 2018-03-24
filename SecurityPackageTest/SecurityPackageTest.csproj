@@ -53,7 +53,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AESTest.cs" />
     <Compile Include="ColumnarTest.cs" />
+    <Compile Include="DES3DESTest.cs" />
+    <Compile Include="ExtendedEuclidTest.cs" />
     <Compile Include="HillCipherTest.cs" />
     <Compile Include="PlayfairTest.cs" />
     <Compile Include="MonoalphabeticTest.cs" />
