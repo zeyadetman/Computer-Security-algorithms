@@ -63,6 +63,8 @@
     <Compile Include="CeaserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RailFenceTest.cs" />
+    <Compile Include="RC4Test.cs" />
+    <Compile Include="RSATest.cs" />
     <Compile Include="VignereTest.cs" />
   </ItemGroup>
   <ItemGroup>
