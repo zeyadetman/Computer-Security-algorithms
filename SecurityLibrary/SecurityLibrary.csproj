@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="AES\AES.cs" />
     <Compile Include="AES\ExtendedEuclid.cs" />
+    <Compile Include="ElGamal\ELGAMAL.cs" />
     <Compile Include="MainAlgorithms\Columnar.cs" />
     <Compile Include="DES\DES.cs" />
     <Compile Include="DES\TripleDES.cs" />
