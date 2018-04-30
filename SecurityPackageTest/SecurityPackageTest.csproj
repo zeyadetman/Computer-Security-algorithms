@@ -60,6 +60,7 @@
     <Compile Include="ElGamalTest.cs" />
     <Compile Include="ExtendedEuclidTest.cs" />
     <Compile Include="HillCipherTest.cs" />
+    <Compile Include="MD5Test.cs" />
     <Compile Include="PlayfairTest.cs" />
     <Compile Include="MonoalphabeticTest.cs" />
     <Compile Include="CeaserTest.cs" />
