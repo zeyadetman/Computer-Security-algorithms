@@ -11,9 +11,9 @@ Computer Security algorithms in C#
 - [x] RailFence
 - [x] RepeatingKeyVigenere
 - [x] RSA
-- [ ] MD5 *Not completed*
+- [ ] MD5 **Not completed**
 - [x] RC4
-- [ ] AES *Don't pass all tests*
+- [ ] AES **Don't pass all tests**
 - [x] DES
 - [x] TripleDES
 - [x] DiffieHellman
