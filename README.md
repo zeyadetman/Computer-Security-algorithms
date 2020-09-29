@@ -22,5 +22,6 @@ Computer Security algorithms in C#
 ## Contributions
 
 - Add More Security Algorithms.
+- Documentation 
 - Refactoring code and increase the performance  of Algorithms.
 - Complete and Fix the Incompleted Algorithms
